@@ -1,25 +1,70 @@
-# docker-nodejs-examples
+# Multi-stage Docker build example
 
-Some basic examples of using Node.js and Docker.
+A more complicated Node.js and Docker example that has a multi-stage build.
 
-These examples acompany the blog post [Crafting build pipelines with Docker](https://www.codecapers.com.au/crafting-build-pipelines-with-docker/).
+This includes a build process for compiling TypeScript files to JavaScript.
 
-You can run these directly with Docker.
+## Files
 
-Follow [the developer on Twitter](https://twitter.com/codecapers) for updates. 
-
-Need to build a microservices application? Learn how to do this with [Bootstrapping Microservices](http://bit.ly/2o0aDsP).
-
-Need to do exploratory coding, data analysis and visualization in JavaScript/TypeScript? [Check out Data-Forge Notebook](http://www.data-forge-notebook.com/)
+- multi/
+  - src/index.ts      Example Express web server in TypeScript.
+  - .dockerignore     Make Docker ignore specified files.
+  - Dockerfile        Script file for building our Docker image.
+  - package.json      Node.js package file, specifies npm dependencies.
+  - tsconfig.json     Configuration file for the TypeScript compiler.
 
 ## Setup
 
-Clone this repo and check the readme files in `simple` and `multi` subdirectories.
+You need Node.js and Docker installed.
 
-## Simplest example
+First change to the directory and install dependencies:
 
-The `simple` sub-directory contains the simplest example of Node.js and Docker.
+```bash
+cd multi
+npm install
+```
 
-## Multi-stage build 
+## Directly run
 
-The `multi` sub-directory shows an example of multi-stage Docker build that compiles TypeScript code.
+Before running the Node.js application you must build the TypeScripot code:
+
+```bash
+npm run build
+```
+
+Now, run it directly like this:
+
+```bash
+npm start
+```
+
+## Build and run using Docker
+
+To build the Docker image:
+
+```bash
+npm run docker:build
+```
+
+To run the Docker image:
+
+```bash
+npm run docker:run
+```
+
+To see what Docker images you have locally:
+
+```bash
+npm run docker:ls
+```
+To see what Docker containers you have running:
+
+```bash
+npm run docker:ps
+```
+
+To stop the container:
+
+```bash
+npm run docker:stop
+```
