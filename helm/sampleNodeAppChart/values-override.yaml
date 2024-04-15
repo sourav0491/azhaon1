@@ -1,0 +1,2 @@
+api:
+  image: azhaon1.azurecr.io/sampleapp:latest

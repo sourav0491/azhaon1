@@ -1,0 +1,6 @@
+api:
+  name: sample-app
+  replicaCount: 1
+  image: localhost:5000/sample-app:latest
+  containerPort: 8080
+  port: 8080
